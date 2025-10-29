@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern Dark Portfolio Theme */
+    --background: 222 47% 4%;
+    --foreground: 213 31% 91%;
+    
+    --card: 222 47% 6%;
+    --card-foreground: 213 31% 91%;
+    
+    --popover: 222 47% 6%;
+    --popover-foreground: 213 31% 91%;
+    
+    /* Primary - Bright Cyan Accent */
+    --primary: 197 100% 50%;
+    --primary-foreground: 222 47% 4%;
+    
+    /* Secondary - Purple Gradient */
+    --secondary: 262 52% 47%;
+    --secondary-foreground: 213 31% 91%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Accent - Pink/Magenta */
+    --accent: 322 81% 57%;
+    --accent-foreground: 213 31% 91%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 197 100% 50%;
+    
+    --radius: 0.75rem;
+    
+    /* Portfolio Specific Colors */
+    --hero-gradient-start: 240 73% 12%;
+    --hero-gradient-end: 262 52% 20%;
+    --hero-accent: 197 100% 50%;
+    --hero-secondary: 322 81% 57%;
+    
+    --glass-bg: 222 47% 8%;
+    --glass-border: 217 33% 20%;
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(222 47% 4% / 0.8);
+    --shadow-card: 0 10px 30px -5px hsl(222 47% 4% / 0.5);
+    
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 213 31% 91%;
+    --sidebar-primary: 197 100% 50%;
+    --sidebar-primary-foreground: 222 47% 4%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 197 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+
+  /* Selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Glass morphism utilities */
+  .glass {
+    background: hsl(var(--glass-bg) / 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  /* Gradient text animation */
+  .gradient-text {
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)));
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 3s ease-in-out infinite;
+  }
+}
