@@ -1,0 +1,17 @@
+{
+  "name": "vijay-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio of Vijay Pandiselvam, UI/UX Designer",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && npx --yes serve public -l 3000"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
