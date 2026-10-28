@@ -37,7 +37,31 @@ const P=[
 {n:'CRONOS',s:'Code Analyzer · Final Year Project',st:'FINAL YEAR',d:'AST-based static code analysis platform that analyzes Python code changes and identifies potential issues, without executing or storing source code. My UX focus was the workflow and interface: communicating privacy guarantees up front and presenting results clearly to developers. Role: Developer &amp; UX.',flow:['Code Commit','GitHub','CRONOS','AST Analysis','Results'],note:'Workflow: GitHub Actions runs automated checks on code changes.',tg:['Python','FastAPI','AST','GitHub Actions','Gemini API'],l:[['View on GitHub ↗','https://github.com/cythonvijay/CRONOS']]},
 {n:'Cloud-Native E-Commerce Platform',s:'CI/CD · Full-stack build',st:'FULL STACK',d:'A full-stack e-commerce platform containerized and deployed through a complete CI/CD workflow. I built it to see how a design behaves in production: a React storefront, a FastAPI backend and PostgreSQL, shipped automatically. Role: Developer / DevOps.',flow:['Frontend','Backend API','PostgreSQL'],flow2:['GitHub','Jenkins','Docker Build','Registry','Kubernetes'],note:'Jenkins pipeline from GitHub to Docker Hub to Kubernetes, with kubectl health checks.',tg:['React','FastAPI','PostgreSQL','Docker','Docker Compose','Jenkins','GitHub','Kubernetes'],l:[['View on GitHub ↗','https://github.com/cythonvijay/ecommerce-platform']]}];
 const fw=a=>a?`<div class="fw">${a.map(x=>`<span>${x}</span>`).join('<em>→</em>')}</div>`:'';
+const PROJECT_META=[
+{platform:'Figma · Interactive prototype',role:'UI/UX Designer',problem:'Help shoppers discover menswear and move from browsing to checkout with less friction.'},
+{platform:'Figma · Dashboard',role:'UI/UX Designer',problem:'Make course progress and AI-assisted study guidance easier for students to scan.'},
+{platform:'Figma · Fintech dashboard',role:'UI/UX Designer',problem:'Make balances, transactions and spending trends clear enough to support confident decisions.'},
+{platform:'Figma · Landing page',role:'UI Designer',problem:'Guide fitness visitors toward membership sign-up with a clear conversion path.'},
+{platform:'Figma · Responsive prototype',role:'UI/UX Designer',problem:'Keep product discovery, product details and checkout consistent across the purchase journey.'},
+{platform:'Python · FastAPI · GitHub Actions',role:'Developer & UX contributor',problem:'Present static code-analysis findings clearly while communicating that source code is not executed or stored.'},
+{platform:'React · FastAPI · PostgreSQL · Docker · Kubernetes',role:'Full-stack / DevOps developer',problem:'Build a repeatable CI/CD path from code changes to a deployed e-commerce application.'}
+];
+
 $('#stk').innerHTML=P.map((p,i)=>`<article class="pc"><span class="mono ac">Destination 0${i+1} · ${p.st}</span><h3>${p.n}</h3><div class="sb">${p.s}</div><p>${p.d}</p>${fw(p.flow)}${fw(p.flow2)}${p.note?`<div class="fl">${p.note}</div>`:''}<div class="tg">${p.tg.map(t=>`<span>${t}</span>`).join('')}</div><div class="acts">${p.l.map(l=>`<a class="btn p" href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join('')}</div></article>`).join('');
+$('#fastProjectGrid').innerHTML=P.map((p,i)=>{const m=PROJECT_META[i];return `<article class="fast-project-card"><span class="mono ac">PROJECT 0${i+1}</span><h3>${p.n}</h3><div class="fast-subtitle">${p.s}</div><dl class="fast-meta"><div><dt>Platform</dt><dd>${m.platform}</dd></div><div><dt>Role</dt><dd>${m.role}</dd></div><div><dt>Problem solved</dt><dd>${m.problem}</dd></div></dl><div class="tg">${p.tg.map(t=>`<span>${t}</span>`).join('')}</div><div class="acts">${p.l.map(l=>`<a class="btn p" href="${l[1]}" target="_blank" rel="noopener">${l[0]}</a>`).join('')}</div></article>`}).join('');
+function setRecruiterMode(enabled){
+ document.body.classList.toggle('recruiter-mode',enabled);
+ const toggle=$('#travelToggle');
+ if(toggle){toggle.setAttribute('aria-pressed',String(enabled));toggle.textContent=enabled?'Story mode ↗':'Recruiter mode ↗';}
+ $('#fastProjects').hidden=!enabled;
+ if(enabled) $('#fastProjects').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+ else $('#hero').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+}
+$('#travelToggle')?.addEventListener('click',()=>setRecruiterMode(!document.body.classList.contains('recruiter-mode')));
+$('#fastTravel')?.addEventListener('click',()=>setRecruiterMode(true));
+$('#returnJourney')?.addEventListener('click',()=>setRecruiterMode(false));
+if(new URLSearchParams(location.search).get('view')==='recruiter') setRecruiterMode(true);
+
 // office windows
 $('#wins').innerHTML=[...Array(18)].map((_,i)=>`<rect class="wn" x="${170+(i%6)*50}" y="${92+Math.floor(i/6)*34*1.1}" width="30" height="26" rx="3" fill="#2b3a7a" style="animation-delay:${(i%6)*.25+Math.floor(i/6)*.5}s"/>`).join('');
 // reveal
