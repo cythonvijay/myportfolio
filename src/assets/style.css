@@ -278,3 +278,27 @@ footer{text-align:center;padding:26px;color:var(--mu);font-size:13px}
 .boom .ofc .wb{animation:none;transform:none}
 .boom .ofc .boy .lg,.boom .ofc .boy .arm,.boom .ofc .boy .bb{animation:none}
 @media(max-width:600px){.sp{font-size:9px;padding:3px 7px;left:34%;bottom:36%}}
+
+/* Recruiter fast-travel view */
+.travel-toggle{border:1px solid var(--line,#d9dce8);background:transparent;color:inherit;border-radius:999px;padding:9px 13px;font:inherit;font-size:12px;cursor:pointer;white-space:nowrap}
+.travel-toggle:hover,.travel-toggle:focus-visible{border-color:var(--accent,#4f46e5);outline-offset:3px}
+.fast-travel{cursor:pointer}
+.fast-projects{padding:clamp(64px,9vw,112px) 0;background:var(--paper,#fff);color:var(--ink,#17172b);min-height:70vh}
+.fast-projects[hidden]{display:none}
+.fast-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
+.fast-heading h2{font-size:clamp(36px,6vw,64px);line-height:1.04;margin:12px 0}
+.fast-heading p{margin:0;color:var(--muted,#66677a)}
+.fast-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fast-project-card{border:1px solid var(--line,#e1e2ec);border-radius:20px;padding:clamp(20px,3vw,30px);background:#fff;box-shadow:0 10px 35px rgba(30,35,80,.06);min-width:0}
+.fast-project-card h3{font-size:clamp(21px,2.6vw,30px);line-height:1.15;margin:16px 0 5px;overflow-wrap:anywhere}
+.fast-subtitle{color:var(--muted,#66677a);font-size:14px}
+.fast-meta{display:grid;gap:12px;margin:22px 0}
+.fast-meta div{border-top:1px solid var(--line,#e1e2ec);padding-top:10px}
+.fast-meta dt{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--accent,#4f46e5);margin-bottom:4px}
+.fast-meta dd{margin:0;font-size:14px;line-height:1.55}
+.fast-project-card .tg{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.fast-project-card .tg span{font-size:11px}
+body.recruiter-mode .walk:not(.cert-walk),body.recruiter-mode #station,body.recruiter-mode #metro,body.recruiter-mode #airport,body.recruiter-mode #w3,body.recruiter-mode #office{display:none!important}
+body.recruiter-mode #fastProjects{display:block}
+@media(max-width:720px){.fast-heading{align-items:flex-start;flex-direction:column}.fast-project-grid{grid-template-columns:1fr}.travel-toggle{padding:8px 10px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.fast-projects *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
